@@ -47,7 +47,7 @@ It enables users to:
 ## 🧠 Tech Stack
 | Layer | Technology |
 |-------|-------------|
-| Frontend | React, Tailwind CSS, React Router, Firebase Auth, reCAPTCHA |
+| Frontend | React, Tailwind CSS, React Router, Firebase Auth |
 | Backend | Node.js, Express.js |
 | Database | MongoDB Atlas |
 | Hosting | Render |
