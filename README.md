@@ -8,9 +8,6 @@ Now enhanced with **Google Sign-In** for added security.
 ## 🚀 Live Demo
 🔗 **Deployed App:** [https://mern-estate-l7c1.onrender.com](https://mern-estate-l7c1.onrender.com)
 
-### 🏠 Home Page
-![Home Page](./screenshots/home.png)
-
 ---
 
 ## 📖 Table of Contents
