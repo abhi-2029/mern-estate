@@ -1,7 +1,7 @@
 # 🏡 MERN Estate – Real Estate Web Application
 
 A full-stack **MERN (MongoDB, Express, React, Node.js)** project where users can explore property listings, create their own listings, and securely sign in using **Firebase Authentication**.  
-Now enhanced with **Google Sign-In** and **Google reCAPTCHA** for added security.  
+Now enhanced with **Google Sign-In** for added security.  
 
 ---
 
@@ -28,14 +28,12 @@ MERN Estate is a full-featured real estate web application built using the **MER
 It enables users to:
 - Register or sign in (with **email/password** or **Google account**),
 - Create, update, and view property listings,
-- Search listings by keywords,
-- And ensure all logins are secure through **CAPTCHA verification**.
+- Search listings by keywords
 
 ---
 
 ## ✨ Features
-✅ User Authentication with **Firebase** (Email/Password & Google OAuth)  
-✅ **reCAPTCHA v2** verification on Sign-In for bot protection  
+✅ User Authentication with **Firebase** (Email/Password & Google OAuth)   
 ✅ JWT-based authentication for backend routes  
 ✅ Create, update, delete, and browse property listings  
 ✅ Search functionality for listings  
@@ -54,7 +52,7 @@ It enables users to:
 | Database | MongoDB Atlas |
 | Hosting | Render |
 | Authentication | Firebase Authentication |
-| Security | reCAPTCHA v2, JWT, bcryptjs |
+| Security | JWT, bcryptjs |
 
 ---
 
@@ -135,10 +133,6 @@ mern-estate-a4f80.firebaseapp.com
 mern-estate-a4f80.web.app
 mern-estate-l7c1.onrender.com
 4.Copy your Firebase config to client/src/firebase.js
-
-🖼️ Screenshots
-🏠 Home Page
-📋 Create Listing
 
 🧑‍💻 Author
 
