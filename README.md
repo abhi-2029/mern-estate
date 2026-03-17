@@ -136,7 +136,7 @@ mern-estate-l7c1.onrender.com
 
 🧑‍💻 Author
 
-Abhishek Singh
+Abhishek Ranjan
 🎓 B.Tech 2026 Batch | Full Stack Developer | DSA & C++ Enthusiast
 🔗 LinkedIn
 📧 abhisheksingh70224@gmail.com
