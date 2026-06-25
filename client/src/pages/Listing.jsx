@@ -53,24 +53,31 @@ export default function Listing() {
   }, [params.listingId]);
 
   return (
-    <main>
+    <main className='bg-slate-50/20 min-h-screen pb-20'>
       {/* ✅ Loading and Error States */}
-      {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
+      {loading && (
+        <div className='flex flex-col items-center justify-center min-h-[50vh] gap-3'>
+          <div className='w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin' />
+          <p className='text-sm text-slate-400 font-bold'>Loading property details...</p>
+        </div>
+      )}
       {error && (
-        <p className='text-center my-7 text-2xl text-red-600'>
-          Something went wrong! Please try again.
-        </p>
+        <div className='flex flex-col items-center justify-center min-h-[50vh] text-center px-4'>
+          <span className='text-4xl mb-4'>⚠️</span>
+          <p className='text-lg font-bold text-slate-700'>Something went wrong</p>
+          <p className='text-sm text-slate-400 mt-1 max-w-xs font-semibold'>Please refresh the page and try again.</p>
+        </div>
       )}
 
       {/* ✅ Listing Display */}
       {listing && !loading && !error && (
         <div>
           {/* ✅ Swiper for images */}
-          <Swiper navigation>
+          <Swiper navigation className='h-[460px] sm:h-[520px] shadow-md'>
             {listing.imageUrls?.map((url, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className='h-[550px]'
+                  className='h-full w-full'
                   style={{
                     background: `url(${url}) center no-repeat`,
                     backgroundSize: 'cover',
@@ -80,92 +87,100 @@ export default function Listing() {
             ))}
           </Swiper>
 
-          {/* ✅ Copy Link Button */}
-          <div
-            className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 
-                       flex justify-center items-center bg-slate-100 cursor-pointer'
+          {/* Floating Share Link Button */}
+          <button
+            className='fixed bottom-6 right-6 z-40 border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 transition-all duration-300 w-12 h-12 rounded-full flex justify-center items-center shadow-lg hover:shadow-xl hover:-translate-y-1'
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
               setCopied(true);
               setTimeout(() => setCopied(false), 2000);
             }}
+            title="Copy Link"
           >
-            <FaShare className='text-slate-500' />
-          </div>
+            <FaShare className='h-4 w-4' />
+          </button>
 
           {copied && (
-            <p className='fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2'>
-              Link copied!
+            <p className='fixed bottom-20 right-6 z-40 rounded-xl bg-slate-900 text-white font-bold text-xs p-3 shadow-xl transition-all duration-300 animate-bounce'>
+              Link copied to clipboard!
             </p>
           )}
 
-          {/* ✅ Listing Details */}
-          <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
-            <p className='text-2xl font-semibold'>
-              {listing.name} - ${' '}
-              {listing.offer
-                ? listing.discountPrice.toLocaleString('en-US')
-                : listing.regularPrice.toLocaleString('en-US')}
-              {listing.type === 'rent' && ' / month'}
-            </p>
+          {/* ✅ Listing Details Card */}
+          <div className='max-w-4xl mx-auto px-6 relative'>
+            <div className='flex flex-col gap-6 bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/50 -mt-16 relative z-10'>
+              
+              {/* Header Info */}
+              <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
+                <h1 className='text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight'>
+                  {listing.name}
+                </h1>
+                <div className='flex items-baseline gap-1.5 shrink-0'>
+                  <span className='text-emerald-600 font-extrabold text-2xl sm:text-3xl'>
+                    $
+                    {listing.offer
+                      ? listing.discountPrice.toLocaleString('en-US')
+                      : listing.regularPrice.toLocaleString('en-US')}
+                  </span>
+                  <span className='text-xs text-slate-500 font-bold uppercase tracking-wider'>
+                    {listing.type === 'rent' && ' / month'}
+                  </span>
+                </div>
+              </div>
 
-            <p className='flex items-center mt-6 gap-2 text-slate-600 text-sm'>
-              <FaMapMarkerAlt className='text-green-700' />
-              {listing.address}
-            </p>
+              {/* Address Map Marker */}
+              <div className='flex items-center gap-2 text-slate-500 text-sm font-semibold'>
+                <FaMapMarkerAlt className='text-emerald-600 h-4 w-4 shrink-0' />
+                <span>{listing.address}</span>
+              </div>
 
-            <div className='flex gap-4'>
-              <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
-              </p>
-              {listing.offer && (
-                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                  ${(+listing.regularPrice - +listing.discountPrice).toLocaleString('en-US')} OFF
-                </p>
-              )}
+              {/* Transaction Badges */}
+              <div className='flex flex-wrap gap-3 mt-1'>
+                <span className={`px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider text-white shadow-sm ${listing.type === 'rent' ? 'bg-indigo-600' : 'bg-rose-600'}`}>
+                  For {listing.type}
+                </span>
+                {listing.offer && (
+                  <span className='bg-emerald-500 text-white px-4 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-sm'>
+                    ${(+listing.regularPrice - +listing.discountPrice).toLocaleString('en-US')} OFF
+                  </span>
+                )}
+              </div>
+
+              {/* Description */}
+              <div className='mt-2 flex flex-col gap-2'>
+                <h3 className='font-extrabold text-slate-800 text-base'>Property Description</h3>
+                <p className='text-slate-500 text-sm leading-relaxed font-semibold'>{listing.description}</p>
+              </div>
+
+              {/* Amenities Specifications Grid */}
+              <ul className='grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-6 border-t border-slate-100'>
+                {[
+                  { icon: <FaBed />, text: listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : `${listing.bedrooms} Bed` },
+                  { icon: <FaBath />, text: listing.bathrooms > 1 ? `${listing.bathrooms} Baths` : `${listing.bathrooms} Bath` },
+                  { icon: <FaParking />, text: listing.parking ? 'Parking spot' : 'No Parking' },
+                  { icon: <FaChair />, text: listing.furnished ? 'Furnished' : 'Unfurnished' },
+                ].map(({ icon, text }, idx) => (
+                  <li key={idx} className='bg-slate-50/50 border border-slate-150 rounded-2xl p-4 flex flex-col items-center gap-2 shadow-sm text-center'>
+                    <span className='text-indigo-600 text-xl'>{icon}</span>
+                    <span className='text-xs font-bold text-slate-600'>{text}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Contact Button */}
+              {currentUser &&
+                listing.userRef !== currentUser._id &&
+                !contact && (
+                  <button
+                    onClick={() => setContact(true)}
+                    className='w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-4 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm uppercase tracking-wider'
+                  >
+                    Contact landlord
+                  </button>
+                )}
+
+              {contact && <Contact listing={listing} />}
             </div>
-
-            <p className='text-slate-800'>
-              <span className='font-semibold text-black'>Description - </span>
-              {listing.description}
-            </p>
-
-            <ul className='text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6'>
-              <li className='flex items-center gap-1 whitespace-nowrap'>
-                <FaBed className='text-lg' />
-                {listing.bedrooms > 1
-                  ? `${listing.bedrooms} beds`
-                  : `${listing.bedrooms} bed`}
-              </li>
-              <li className='flex items-center gap-1 whitespace-nowrap'>
-                <FaBath className='text-lg' />
-                {listing.bathrooms > 1
-                  ? `${listing.bathrooms} baths`
-                  : `${listing.bathrooms} bath`}
-              </li>
-              <li className='flex items-center gap-1 whitespace-nowrap'>
-                <FaParking className='text-lg' />
-                {listing.parking ? 'Parking spot' : 'No Parking'}
-              </li>
-              <li className='flex items-center gap-1 whitespace-nowrap'>
-                <FaChair className='text-lg' />
-                {listing.furnished ? 'Furnished' : 'Unfurnished'}
-              </li>
-            </ul>
-
-            {/* ✅ Contact Button */}
-            {currentUser &&
-              listing.userRef !== currentUser._id &&
-              !contact && (
-                <button
-                  onClick={() => setContact(true)}
-                  className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
-                >
-                  Contact landlord
-                </button>
-              )}
-
-            {contact && <Contact listing={listing} />}
           </div>
         </div>
       )}

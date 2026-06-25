@@ -17,16 +17,15 @@ export const updateUser = async (req, res, next) => {
       req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
 
+    const updateFields = {};
+    if (req.body.username) updateFields.username = req.body.username;
+    if (req.body.email) updateFields.email = req.body.email;
+    if (req.body.password) updateFields.password = req.body.password;
+    if (req.body.avatar) updateFields.avatar = req.body.avatar;
+
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
-      {
-        $set: {
-          username: req.body.username,
-          email: req.body.email,
-          password: req.body.password,
-          avatar: req.body.avatar,
-        },
-      },
+      { $set: updateFields },
       { new: true }
     );
 

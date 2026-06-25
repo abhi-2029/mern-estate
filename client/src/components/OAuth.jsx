@@ -36,9 +36,9 @@ export default function OAuth() {
     <button
       onClick={handleGoogleClick}
       type='button'
-      className='bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95'
+      className='w-full border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 font-bold py-3 px-4 rounded-xl shadow-sm transition-all duration-200 text-sm uppercase tracking-wider flex items-center justify-center gap-2'
     >
-      Continue with google
+      Continue with Google
     </button>
   );
 }
