@@ -30,7 +30,7 @@ export default function Header() {
       <div className='flex justify-between items-center max-w-6xl mx-auto p-4 px-6'>
         <Link to='/'>
           <h1 className='font-extrabold text-lg sm:text-2xl tracking-tight flex items-center gap-1.5'>
-            <span className='bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent'>Sahand</span>
+            <span className='bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent'>Abhi</span>
             <span className='text-slate-800 font-semibold text-base sm:text-lg bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200/60'>Estate</span>
           </h1>
         </Link>

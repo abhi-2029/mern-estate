@@ -79,8 +79,12 @@ export default function CreateListing() {
 
       uploadTask.on(
         'state_changed',
-        null,
-        (error) => reject(error),
+        (snapshot) => {
+          // Progress tracking
+        },
+        (error) => {
+          reject(error);
+        },
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
             .then((downloadURL) => resolve(downloadURL))

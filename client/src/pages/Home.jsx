@@ -50,7 +50,7 @@ export default function Home() {
             place with ease
           </h1>
           <p className='text-slate-500 text-sm sm:text-base max-w-xl font-medium leading-relaxed'>
-            Sahand Estate is the premier destination to discover high-end living spaces.
+            Abhi Estate is the premier destination to discover high-end living spaces.
             Browse from curated listings and contact landlords instantly.
           </p>
           <div className='flex flex-wrap gap-4 mt-2 justify-center sm:justify-start'>

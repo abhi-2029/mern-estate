@@ -51,7 +51,7 @@ export default function SignUp() {
     <div className='max-w-md mx-auto my-16 p-8 bg-white border border-slate-200/50 rounded-3xl shadow-xl flex flex-col gap-6'>
       <div className='text-center'>
         <h1 className='text-3xl font-extrabold text-slate-800 tracking-tight'>Create Account</h1>
-        <p className='text-xs text-slate-400 font-semibold mt-1'>Join Sahand Estate to find your perfect place</p>
+        <p className='text-xs text-slate-400 font-semibold mt-1'>Join Abhi Estate to find your perfect place</p>
       </div>
 
       <form onSubmit={handleSubmit} className='flex flex-col gap-4 mt-2'>

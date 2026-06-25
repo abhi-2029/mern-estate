@@ -82,7 +82,7 @@ export default function SignIn() {
       </form>
 
       <div className='flex items-center justify-center gap-1.5 text-sm pt-4 border-t border-slate-100/80'>
-        <span className='text-slate-400 font-semibold'>New to Sahand Estate?</span>
+        <span className='text-slate-400 font-semibold'>New to Abhi Estate?</span>
         <Link to={"/sign-up"} className='text-indigo-600 hover:underline font-bold'>
           Create account
         </Link>

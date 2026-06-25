@@ -76,8 +76,12 @@ export default function UpdateListing() {
 
       uploadTask.on(
         'state_changed',
-        null,
-        (error) => reject(error),
+        (snapshot) => {
+          // Progress tracking
+        },
+        (error) => {
+          reject(error);
+        },
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
             .then(resolve)
