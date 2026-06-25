@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",  // <-- FIX: double asterisk for subfolders
   ],
+  darkMode: 'class',
   theme: {
     extend: {},
   },

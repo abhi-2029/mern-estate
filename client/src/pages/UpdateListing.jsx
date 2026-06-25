@@ -180,12 +180,12 @@ export default function UpdateListing() {
   }
 
   return (
-    <main className='p-6 max-w-5xl mx-auto bg-white border border-slate-200/60 rounded-3xl shadow-xl my-10'>
+    <main className='p-6 max-w-5xl mx-auto bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-3xl shadow-xl my-10 transition-colors duration-300'>
       <div className='text-center my-6'>
-        <h1 className='text-4xl font-extrabold text-slate-800 tracking-tight'>
+        <h1 className='text-4xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight'>
           Update a Listing
         </h1>
-        <p className='text-sm text-slate-400 font-semibold mt-2'>
+        <p className='text-sm text-slate-400 dark:text-slate-500 font-semibold mt-2'>
           Modify details, pricing, or images for your listing on Abhi Estate
         </p>
       </div>
@@ -194,11 +194,11 @@ export default function UpdateListing() {
         {/* Left Column - Details */}
         <div className='flex flex-col gap-5 flex-1'>
           <div className='flex flex-col gap-1'>
-            <label className='text-xs text-slate-400 font-bold uppercase tracking-wider pl-1'>Property Title</label>
+            <label className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider pl-1'>Property Title</label>
             <input
               type='text'
               placeholder='E.g., Luxurious Penthouse in Downtown'
-              className='bg-slate-50/50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 rounded-xl px-4 py-3.5 text-sm outline-none transition-all duration-300 w-full font-semibold text-slate-700 placeholder-slate-400'
+              className='bg-slate-50/50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 rounded-xl px-4 py-3.5 text-sm outline-none transition-all duration-300 w-full font-semibold text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500'
               id='name'
               maxLength='62'
               minLength='10'
@@ -209,10 +209,10 @@ export default function UpdateListing() {
           </div>
 
           <div className='flex flex-col gap-1'>
-            <label className='text-xs text-slate-400 font-bold uppercase tracking-wider pl-1'>Description</label>
+            <label className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider pl-1'>Description</label>
             <textarea
               placeholder='Describe the property features, neighborhood, and amenities...'
-              className='bg-slate-50/50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300 w-full font-semibold text-slate-700 placeholder-slate-400 min-h-[120px]'
+              className='bg-slate-50/50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 rounded-xl px-4 py-3 text-sm outline-none transition-all duration-300 w-full font-semibold text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 min-h-[120px]'
               id='description'
               required
               onChange={handleChange}
@@ -221,11 +221,11 @@ export default function UpdateListing() {
           </div>
 
           <div className='flex flex-col gap-1'>
-            <label className='text-xs text-slate-400 font-bold uppercase tracking-wider pl-1'>Address</label>
+            <label className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider pl-1'>Address</label>
             <input
               type='text'
               placeholder='Full location address'
-              className='bg-slate-50/50 border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 rounded-xl px-4 py-3.5 text-sm outline-none transition-all duration-300 w-full font-semibold text-slate-700 placeholder-slate-400'
+              className='bg-slate-50/50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 rounded-xl px-4 py-3.5 text-sm outline-none transition-all duration-300 w-full font-semibold text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500'
               id='address'
               required
               onChange={handleChange}
@@ -235,7 +235,7 @@ export default function UpdateListing() {
 
           {/* Checkbox Toggle Chips */}
           <div className='flex flex-col gap-2 mt-2'>
-            <label className='text-xs text-slate-400 font-bold uppercase tracking-wider pl-1'>Property Features</label>
+            <label className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider pl-1'>Property Features</label>
             <div className='flex gap-3 flex-wrap'>
               {[
                 { id: 'sale', label: 'Sell' },
@@ -250,8 +250,8 @@ export default function UpdateListing() {
                     key={id}
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 cursor-pointer transition-all duration-300 select-none ${
                       isChecked
-                        ? 'border-indigo-500 bg-indigo-50/20 text-indigo-700 font-bold'
-                        : 'border-slate-200/80 bg-slate-50/10 text-slate-600 font-semibold hover:border-slate-300 hover:bg-slate-50/30'
+                        ? 'border-indigo-500 bg-indigo-50/20 dark:bg-indigo-950/30 text-indigo-700 dark:text-indigo-300 font-bold'
+                        : 'border-slate-200/80 dark:border-slate-800 bg-slate-50/10 dark:bg-slate-800/20 text-slate-600 dark:text-slate-300 font-semibold hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50/30 dark:hover:bg-slate-800/40'
                     }`}
                   >
                     <input
@@ -264,7 +264,7 @@ export default function UpdateListing() {
                     <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
                       isChecked
                         ? 'border-indigo-600 bg-indigo-600 text-white'
-                        : 'border-slate-300 bg-white'
+                        : 'border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800'
                     }`}>
                       {isChecked && (
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
@@ -280,58 +280,58 @@ export default function UpdateListing() {
           </div>
 
           {/* Numeric Specifications */}
-          <div className='flex flex-wrap gap-4 bg-slate-50/30 p-5 rounded-2xl border border-slate-100 mt-2'>
-            <div className='flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm'>
-              <span className='text-xs text-slate-400 font-bold uppercase tracking-wider'>Beds</span>
+          <div className='flex flex-wrap gap-4 bg-slate-50/30 dark:bg-slate-800/20 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 mt-2'>
+            <div className='flex items-center gap-3 bg-white dark:bg-slate-900 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm'>
+              <span className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider'>Beds</span>
               <input
                 type='number'
                 id='bedrooms'
                 min='1'
                 max='10'
                 required
-                className='w-10 bg-transparent text-base font-extrabold text-slate-700 outline-none text-center border-b border-dashed border-slate-300 focus:border-indigo-500'
+                className='w-10 bg-transparent text-base font-extrabold text-slate-700 dark:text-slate-200 outline-none text-center border-b border-dashed border-slate-300 dark:border-slate-700 focus:border-indigo-500'
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
             </div>
 
-            <div className='flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm'>
-              <span className='text-xs text-slate-400 font-bold uppercase tracking-wider'>Baths</span>
+            <div className='flex items-center gap-3 bg-white dark:bg-slate-900 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm'>
+              <span className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider'>Baths</span>
               <input
                 type='number'
                 id='bathrooms'
                 min='1'
                 max='10'
                 required
-                className='w-10 bg-transparent text-base font-extrabold text-slate-700 outline-none text-center border-b border-dashed border-slate-300 focus:border-indigo-500'
+                className='w-10 bg-transparent text-base font-extrabold text-slate-700 dark:text-slate-200 outline-none text-center border-b border-dashed border-slate-300 dark:border-slate-700 focus:border-indigo-500'
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
             </div>
 
             <div className='flex flex-col gap-1 flex-1 min-w-[150px]'>
-              <div className='flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-50'>
-                <span className='text-xs text-slate-400 font-bold uppercase tracking-wider'>Price</span>
-                <span className='text-slate-400 font-extrabold text-sm'>$</span>
+              <div className='flex items-center gap-2 bg-white dark:bg-slate-900 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-50 dark:focus-within:ring-indigo-900/30'>
+                <span className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider'>Price</span>
+                <span className='text-slate-400 dark:text-slate-500 font-extrabold text-sm'>$</span>
                 <input
                   type='number'
                   id='regularPrice'
                   min='50'
                   max='10000000'
                   required
-                  className='bg-transparent text-sm font-extrabold text-slate-700 outline-none w-full border-b border-dashed border-slate-300 focus:border-indigo-500'
+                  className='bg-transparent text-sm font-extrabold text-slate-700 dark:text-slate-200 outline-none w-full border-b border-dashed border-slate-300 dark:border-slate-700 focus:border-indigo-500'
                   onChange={handleChange}
                   value={formData.regularPrice}
                 />
                 {formData.type === 'rent' && (
-                  <span className='text-[10px] text-slate-400 font-bold whitespace-nowrap uppercase tracking-wider'>/ mo</span>
+                  <span className='text-[10px] text-slate-400 dark:text-slate-500 font-bold whitespace-nowrap uppercase tracking-wider'>/ mo</span>
                 )}
               </div>
             </div>
 
             {formData.offer && (
               <div className='flex flex-col gap-1 flex-1 min-w-[150px]'>
-                <div className='flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-50'>
+                <div className='flex items-center gap-2 bg-white dark:bg-slate-900 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-50 dark:focus-within:ring-indigo-900/30'>
                   <span className='text-xs text-rose-500 font-bold uppercase tracking-wider'>Discount</span>
                   <span className='text-rose-500 font-extrabold text-sm'>$</span>
                   <input
@@ -340,12 +340,12 @@ export default function UpdateListing() {
                     min='0'
                     max='10000000'
                     required
-                    className='bg-transparent text-sm font-extrabold text-slate-700 outline-none w-full border-b border-dashed border-slate-300 focus:border-indigo-500'
+                    className='bg-transparent text-sm font-extrabold text-slate-700 dark:text-slate-200 outline-none w-full border-b border-dashed border-slate-300 dark:border-slate-700 focus:border-indigo-500'
                     onChange={handleChange}
                     value={formData.discountPrice}
                   />
                   {formData.type === 'rent' && (
-                    <span className='text-[10px] text-slate-400 font-bold whitespace-nowrap uppercase tracking-wider'>/ mo</span>
+                    <span className='text-[10px] text-slate-400 dark:text-slate-500 font-bold whitespace-nowrap uppercase tracking-wider'>/ mo</span>
                   )}
                 </div>
               </div>
@@ -357,8 +357,8 @@ export default function UpdateListing() {
         <div className='flex flex-col lg:w-[400px] gap-6'>
           {/* Custom Upload Dropzone */}
           <div className='flex flex-col gap-2'>
-            <label className='text-xs text-slate-400 font-bold uppercase tracking-wider pl-1'>Upload Images</label>
-            <div className='border-2 border-dashed border-slate-200 hover:border-indigo-500 bg-slate-50/30 hover:bg-indigo-50/10 rounded-2xl p-6 transition-all duration-300 flex flex-col items-center justify-center gap-3 group relative cursor-pointer'>
+            <label className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider pl-1'>Upload Images</label>
+            <div className='border-2 border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-800/20 hover:border-indigo-500 dark:hover:border-indigo-400 hover:bg-indigo-50/10 dark:hover:bg-indigo-950/10 rounded-2xl p-6 transition-all duration-300 flex flex-col items-center justify-center gap-3 group relative cursor-pointer'>
               <input
                 onChange={(e) => setFiles(e.target.files)}
                 type='file'
@@ -367,14 +367,14 @@ export default function UpdateListing() {
                 multiple
                 className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
               />
-              <div className='p-3 bg-indigo-50 rounded-2xl group-hover:bg-indigo-100 transition-all duration-300 text-indigo-600'>
+              <div className='p-3 bg-indigo-50 dark:bg-indigo-950/40 rounded-2xl group-hover:bg-indigo-100 transition-all duration-300 text-indigo-600 dark:text-indigo-400'>
                 <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={2} stroke='currentColor' className='w-7 h-7'>
                   <path strokeLinecap='round' strokeLinejoin='round' d='M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
                 </svg>
               </div>
               <div className='text-center'>
-                <p className='text-sm font-bold text-slate-700'>Click to select images</p>
-                <p className='text-xs text-slate-400 font-semibold mt-1'>
+                <p className='text-sm font-bold text-slate-700 dark:text-slate-300'>Click to select images</p>
+                <p className='text-xs text-slate-400 dark:text-slate-500 font-semibold mt-1'>
                   {files.length > 0 ? `${files.length} file(s) selected` : 'Select up to 6 images (first is cover)'}
                 </p>
               </div>
@@ -396,12 +396,12 @@ export default function UpdateListing() {
           {/* Uploaded Image Gallery Grid */}
           {formData.imageUrls.length > 0 && (
             <div className='flex flex-col gap-2'>
-              <label className='text-xs text-slate-400 font-bold uppercase tracking-wider pl-1'>Image Gallery</label>
-              <div className='grid grid-cols-3 gap-3 bg-slate-50/50 p-3 rounded-2xl border border-slate-100'>
+              <label className='text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider pl-1'>Image Gallery</label>
+              <div className='grid grid-cols-3 gap-3 bg-slate-50/50 dark:bg-slate-800/20 p-3 rounded-2xl border border-slate-100 dark:border-slate-800'>
                 {formData.imageUrls.map((url, index) => (
                   <div
                     key={url}
-                    className='relative group aspect-square rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md'
+                    className='relative group aspect-square rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-all duration-300 hover:shadow-md'
                   >
                     <img
                       src={url}
@@ -433,7 +433,7 @@ export default function UpdateListing() {
           {/* Form Action Button */}
           <button
             disabled={loading || uploading}
-            className='w-full p-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white font-extrabold rounded-2xl shadow-xl shadow-slate-100 hover:shadow-slate-200 hover:from-slate-900 hover:to-black transform hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 uppercase tracking-wider text-xs disabled:opacity-50 disabled:hover:-translate-y-0 mt-4'
+            className='w-full p-4 bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-700 dark:to-slate-800 text-white font-extrabold rounded-2xl shadow-xl shadow-slate-100 dark:shadow-none hover:shadow-slate-200 hover:from-slate-900 hover:to-black dark:hover:from-slate-800 dark:hover:to-slate-900 transform hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 uppercase tracking-wider text-xs disabled:opacity-50 disabled:hover:-translate-y-0 mt-4'
           >
             {loading ? 'Updating...' : 'Update listing'}
           </button>

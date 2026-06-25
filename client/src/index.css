@@ -5,7 +5,7 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    @apply bg-slate-50 text-slate-800 antialiased scroll-smooth;
+    @apply bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased scroll-smooth transition-colors duration-300;
   }
 }
 
@@ -15,12 +15,11 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  @apply bg-slate-100 dark:bg-slate-900;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  @apply bg-slate-400 dark:bg-slate-600;
 }
