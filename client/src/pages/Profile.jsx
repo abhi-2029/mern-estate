@@ -38,31 +38,19 @@ export default function Profile() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file]);
 
-  // ✅ Firebase image upload with progress
+  // ✅ Local Base64 image reader
   const handleFileUpload = (file) => {
-    const storage = getStorage(app);
-    const fileName = new Date().getTime() + '_' + file.name;
-    const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setFilePerc(Math.round(progress));
-      },
-      (error) => {
-        console.error('Upload error:', error);
-        setFileUploadError(true);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setFormData((prev) => ({ ...prev, avatar: downloadURL }));
-          setFileUploadError(false);
-        });
-      }
-    );
+    const reader = new FileReader();
+    setFilePerc(10);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setFormData((prev) => ({ ...prev, avatar: reader.result }));
+      setFilePerc(100);
+      setFileUploadError(false);
+    };
+    reader.onerror = () => {
+      setFileUploadError(true);
+    };
   };
 
   // ✅ Handle input changes

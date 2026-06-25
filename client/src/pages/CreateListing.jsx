@@ -69,28 +69,13 @@ export default function CreateListing() {
       });
   };
 
-  // ✅ Firebase image upload function
+  // ✅ Local Base64 image reader helper
   const storeImage = async (file) => {
     return new Promise((resolve, reject) => {
-      const storage = getStorage(app);
-      const fileName = `${new Date().getTime()}_${file.name}`;
-      const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          // Progress tracking
-        },
-        (error) => {
-          reject(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((downloadURL) => resolve(downloadURL))
-            .catch(reject);
-        }
-      );
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
     });
   };
 
